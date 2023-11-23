@@ -1,4 +1,4 @@
-package com.example.mod.hook;
+package com.github.dreaght.hook;
 
 import net.weavemc.loader.api.Hook;
 import org.jetbrains.annotations.NotNull;
@@ -15,20 +15,20 @@ public class MinecraftHook extends Hook {
     @Override
     public void transform(@NotNull ClassNode classNode, @NotNull AssemblerConfig assemblerConfig) {
         classNode.methods.stream()
-                .filter(m -> m.name.equals("startGame"))
+                .filter(m -> m.name.equals("update"))
                 .findFirst().orElseThrow()
                 .instructions.insert(
                         new MethodInsnNode(
                                 Opcodes.INVOKESTATIC,
                                 Type.getInternalName(MinecraftHook.class),
-                                "onStartGame",
+                                "onUpdate",
                                 "()V"
                         )
                 );
     }
 
-    @SuppressWarnings("unused")
-    public static void onStartGame() {
-        System.out.println("Hook Test");
+    public static void onUpdate(int x, int y) {
+        // Ваш код хука
+        System.out.printf("Hook called with position (%d, %d)\n", x, y);
     }
 }

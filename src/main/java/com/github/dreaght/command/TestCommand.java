@@ -1,4 +1,4 @@
-package com.example.mod.command;
+package com.github.dreaght.command;
 
 import net.weavemc.loader.api.command.Command;
 import net.minecraft.client.Minecraft;
