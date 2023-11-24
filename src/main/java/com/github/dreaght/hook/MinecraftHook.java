@@ -15,20 +15,20 @@ public class MinecraftHook extends Hook {
     @Override
     public void transform(@NotNull ClassNode classNode, @NotNull AssemblerConfig assemblerConfig) {
         classNode.methods.stream()
-                .filter(m -> m.name.equals("update"))
+                .filter(m -> m.name.equals("startGame"))
                 .findFirst().orElseThrow()
                 .instructions.insert(
                         new MethodInsnNode(
                                 Opcodes.INVOKESTATIC,
                                 Type.getInternalName(MinecraftHook.class),
-                                "onUpdate",
+                                "onStartGame",
                                 "()V"
                         )
                 );
     }
 
-    public static void onUpdate(int x, int y) {
-        // Ваш код хука
-        System.out.printf("Hook called with position (%d, %d)\n", x, y);
+    @SuppressWarnings("unused")
+    public static void onStartGame() {
+        System.out.println("Hook Test");
     }
 }

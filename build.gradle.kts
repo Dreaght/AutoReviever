@@ -17,13 +17,9 @@ dependencies {
     compileOnly("com.github.weave-mc:weave-loader:v0.2.4")
 
     compileOnly("org.spongepowered:mixin:0.8.5")
+
 }
 
 tasks.compileJava {
     options.release.set(11)
-}
-
-tasks.jar {
-    archiveFileName.set("AutoReviver.jar")
-    destinationDirectory.set(file("C:\\Users\\nikit\\.weave\\mods"))
 }
