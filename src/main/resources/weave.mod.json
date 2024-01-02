@@ -1,11 +1,5 @@
 {
-  "mixinConfigs": [
-    "autoreviver.mixins.json"
-  ],
   "entrypoints": [
     "com.github.dreaght.AutoReviver"
-  ],
-  "hooks": [
-    "com.github.dreaght.hook.MinecraftHook"
   ]
 }
